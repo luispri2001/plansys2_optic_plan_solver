@@ -65,3 +65,9 @@ planner:
 | :goal-utilities | No |
 | **PDDL+** | |
 | :time | No |
+
+## Contributors
+- Carlos Caminero Abad [@Carlosalpha1](https://github.com/Carlosalpha1)
+- Paula Martínez Pérez [@paulamartinezperez](https://github.com/paulamartinezperez)
+- María Marcos Hidalgo [@mariamhidalgo](https://github.com/mariamhidalgo)
+- Javier Martínez Madruga [@jmrtzma](https://github.com/jmrtzma)
