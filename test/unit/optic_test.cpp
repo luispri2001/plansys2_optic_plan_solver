@@ -47,11 +47,11 @@ TEST(optic_plan_solver, generate_plan_good)
   auto plan = planner->getPlan(domain_str, problem_str, "generate_plan_good");
 
   ASSERT_TRUE(plan);
-  ASSERT_EQ(plan.value().size(), 4);
-  ASSERT_EQ(plan.value()[0].action, "(move_to robot1 room1 room2)");
-  ASSERT_EQ(plan.value()[1].action, "(take_object robot1 ball room2)");
-  ASSERT_EQ(plan.value()[2].action, "(move_to robot1 room2 room1)");
-  ASSERT_EQ(plan.value()[3].action, "(drop_object robot1 ball room1)");
+  ASSERT_EQ(plan.value().items.size(), 4);
+  ASSERT_EQ(plan.value().items[0].action, "(move_to robot1 room1 room2)");
+  ASSERT_EQ(plan.value().items[1].action, "(take_object robot1 ball room2)");
+  ASSERT_EQ(plan.value().items[2].action, "(move_to robot1 room2 room1)");
+  ASSERT_EQ(plan.value().items[3].action, "(drop_object robot1 ball room1)");
 }
 
 TEST(optic_plan_solver, load_optic_plugin)

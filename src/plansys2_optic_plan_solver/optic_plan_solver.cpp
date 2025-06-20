@@ -31,7 +31,7 @@ OPTICPlanSolver::OPTICPlanSolver()
 {
 }
 
-std::optional<Plan>
+std::optional<plansys2_msgs::msg::Plan>
 OPTICPlanSolver::getPlan(
   const std::string & domain, const std::string & problem,
   const std::string & node_namespace)
@@ -46,7 +46,7 @@ OPTICPlanSolver::getPlan(
     std::filesystem::create_directories(tp);
   }
 
-  Plan ret;
+  plansys2_msgs::msg::Plan ret;
   std::ofstream domain_out("/tmp/" + node_namespace + "/domain.pddl");
   domain_out << domain;
   domain_out.close();
@@ -69,7 +69,7 @@ OPTICPlanSolver::getPlan(
           solution_optic = true;
         }
       } else if (isdigit(line_optic.front())) {
-        PlanItem item;
+        plansys2_msgs::msg::PlanItem item;
         std::cout << " optic:" << line_optic << std::endl;
         size_t colon_pos = line_optic.find(":");
         size_t colon_par = line_optic.find(")");
@@ -84,14 +84,14 @@ OPTICPlanSolver::getPlan(
         item.action = action;
         item.duration = std::stof(duration);
 
-        ret.push_back(item);
+        ret.items.push_back(item);
       }
     }
     plan_fileoptic.close();
   }
 
 
-  if (ret.empty()) {
+  if (ret.items.empty()) {
     return {};
   } else {
     return ret;
